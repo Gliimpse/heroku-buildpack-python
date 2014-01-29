@@ -12,6 +12,7 @@
 # Syntax sugar.
 source $BIN_DIR/utils
 
+echo $(pwd)
 # If numpy exists within requirements, install it now.
 if (grep -Eiq "^\s*numpy" requirements.txt) then
   echo "-----> Noticed NumPy. Installing separately."
