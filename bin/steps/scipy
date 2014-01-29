@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# This script serves as the NumPy build step of the
+# [**Python Buildpack**](https://github.com/heroku/heroku-buildpack-python)
+# compiler.
+#
+# A [buildpack](http://devcenter.heroku.com/articles/buildpacks) is an
+# adapter between a Python application and Heroku's runtime.
+#
+# This script is invoked by [`bin/compile`](/).
+
+# Syntax sugar.
+source $BIN_DIR/utils
+
+# If numpy exists within requirements, install it now.
+if (grep -Eiq "^\s*scipy" requirements.txt) then
+  echo "-----> Noticed scipy. Installing separately."
+
+  cd .heroku
+  /app/.heroku/python/bin/pip install scipy --exists-action=w --src=./.heroku/src  | cleanup | indent
+fi
