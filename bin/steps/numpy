@@ -18,4 +18,5 @@ if (grep -Eiq "^\s*numpy" /app/requirements.txt) then
 
   cd .heroku
   /app/.heroku/python/bin/pip install numpy --exists-action=w --src=./.heroku/src  | cleanup | indent
+  cd ..
 fi
