@@ -13,7 +13,7 @@
 source $BIN_DIR/utils
 
 # If numpy exists within requirements, install it now.
-if (grep -Eiq "^\s*scipy" requirements.txt) then
+if (grep -Eiq "^\s*scipy" /app/requirements.txt) then
   echo "-----> Noticed scipy. Installing separately."
 
   cd .heroku
